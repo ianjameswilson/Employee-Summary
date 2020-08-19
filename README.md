@@ -23,7 +23,14 @@ Please make sure to update tests as appropriate.
 ## Tests
 To run tests, run the following command: 
 ```
-node Employee.test.js, node Engineer.test.js, node Intern.test.js, node Manager.test.js
+node Employee.test.js
+
+node Engineer.test.js
+
+node Intern.test.js
+
+node Manager.test.js
+
 ```
 ## Questions
 Direct all questions regarding the app to design@ianjameswilson.com
