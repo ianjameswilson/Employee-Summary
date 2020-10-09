@@ -38,19 +38,19 @@ function createManager() {
             }
         },{
             type: "input",
-            name: "managerId",
-            message: "What is your manager's id?"
+            name: "managerPhone",
+            message: "What is your manager's Phone Number?"
         },{
             type: "input",
             name: "managerEmail",
-            message: "What is your manager's email?"
+            message: "What is your manager's email address?"
         },{
             type: "input",
-            name: "managerOfficeNumber",
-            message: "What is your manager's office number?"
+            name: "managerRegion",
+            message: "What region does your PM manage?"
         },
     ]).then(answers => {
-        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+        const manager = new Manager(answers.managerName, answers.managerPhone, answers.managerEmail, answers.managerRegion);
         teamMembers.push(manager);
         createTeam();
     });
@@ -64,76 +64,75 @@ function createTeam() {
             name: "memberChoice",
             message: "Which type of team member would you like to add?",
             choices: [
-            "Engineer",
-            "Intern",
+            "Merchandizer",
+            "Lead Laborer",
+            "General Laborer",
             "I don't want to add any more team members"
             ]
         }
         ]).then(userChoice => {
             switch(userChoice.memberChoice) {
-            case "Engineer":
-            addEngineer();
+            case "Merchandizer":
+            addMerchandizer();
             break;
-            case "Intern":
-            addIntern();
+            case "Lead Laborer":
+            addLeadLaborer();
             break;
+            case "General Laborer":
+            addGeneralLaborer();
             default:
             buildTeam();
         }
     });
 }
 
-function addEngineer() {
-    console.log("Please fill in your engineer's info");
+function addMerchandizer() {
+    console.log("Please fill in your merchandizer's info");
     inquirer.prompt([
         {
             type: "input",
-            name: "engineerName",
-            message: "What is your engineer's name?"
+            name: "merchandizerName",
+            message: "What is your merchandizer's name?"
         },{
             type: "input",
-            name: "engineerId",
-            message: "What is your engineer's id?"
+            name: "merchandizerPhone",
+            message: "What is your merchandizer's phone number?"
         },{
             type: "input",
-            name: "engineerEmail",
-            message: "What is your engineer's email?"
+            name: "merchandizerEmail",
+            message: "What is your merchandizer's email?"
         },{
             type: "input",
-            name: "engineerGithub",
-            message: "What is your engineer's github username?"
+            name: "merchandizerStoreNumberAndCity",
+            message: "Store #, City, and State?"
         },
     ]).then(answers => {
-        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-        teamMembers.push(engineer);
+        const merchandizer = new Merchandizer(answers.merchandizerName, answers.merchandizerPhone, answers.merchandizerEmail, answers.merchandizerStoreNumberAndCity);
+        teamMembers.push(merchandizer);
         createTeam();
     });
 
 }
 
-function addIntern() {
-    console.log("Please fill in your intern's info");
+function addLeadLaborer() {
+    console.log("Please fill in your Lead Laborer's info");
     inquirer.prompt([
         {
             type: "input",
-            name: "internName",
-            message: "What is your intern's name?"
+            name: "leadLaborerName",
+            message: "What is your lead laborer's name?"
         },{
             type: "input",
-            name: "internId",
-            message: "What is your intern's id?"
+            name: "leadLaborerPhone",
+            message: "What is your lead laborer's phone number?"
         },{
             type: "input",
-            name: "internEmail",
-            message: "What is your intern's email?"
-        },{
-            type: "input",
-            name: "internSchool",
-            message: "What is your intern's school?"
+            name: "leadLaborerEmail",
+            message: "What is your lead laborer's email?"
         },
     ]).then(answers => {
-        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-        teamMembers.push(intern);
+        const leadLaborer = new LeadLaborer(answers.leadLaborerName, answers.leadLaborerPhone, answers.leadLaborerEmail);
+        teamMembers.push(leadLaborer);
         createTeam();
     });
 
@@ -147,14 +146,3 @@ function buildTeam() {
 }
 
 createManager();
-
-
-
-
-
-
-
-
-
-
-
